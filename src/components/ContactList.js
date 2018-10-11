@@ -1,69 +1,70 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 // import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import ContactSticker from "./ContactSticker";
+import Contact from "./Contact";
+
 import PopUp from "./PopUp";
-
-import { DragSource } from "react-dnd";
-import { ItemTypes } from "./Constants";
-
-const cardSource = {
-  beginDrag(props) {
-    return {
-      text: props.text
-    };
-  }
-};
-
-@DragSource(ItemTypes.ContactList, cardSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
-}))
-
+import ContactStickerZone from "./ContactStickerZone";
+const update = require("immutability-helper");
 
 class ContactList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      edit: false
+      edit: false,
+      contacts: []
     };
-    // this.addContactHandler = this.addContactHandler.bind(this);
     this.onEdit = this.onEdit.bind(this);
   }
 
-
-  static propTypes = {
-    text: PropTypes.string.isRequired,
-
-    // Injected by React DnD:
-    connectDragSource: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool.isRequired
-  };
   componentDidMount() {
-    console.log("componentList remounted");
+    if (this.state.contacts.length === 0) {
+      this.setState({ contacts: this.props.contacts });
+    }
   }
 
   onEdit() {
     this.setState({ edit: true });
   }
-
+  moveCard = (dragIndex, hoverIndex) => {
+    const cards  = this.state.contacts;
+    const dragCard = cards[dragIndex];
+// console.log(dragCard);
+// console.log(hoverIndex);
+    this.setState(
+      update(this.state, {
+        contacts: {
+          $splice: [[dragIndex, 1], [hoverIndex, 0, dragCard]]
+        }
+      })
+    );
+    // console.log(this.state.contacts);
+  };
   render() {
-    const { isDragging, connectDragSource, text } = this.props;
-    console.log(this.props.contacts);
+    // console.log(this.state.contacts);
+
     const contactGrid = (
-      <div className="contacts_section">
+      <ContactStickerZone contacts={this.props.contacts} {...this.props}>
+        {/* <div className="contacts_section"> */}
         {this.props.contacts.map((element, i) => {
           return (
             <PopUp
               trigger={
                 <div>
-                  <ContactSticker
+                  {/* <ContactSticker */}
+                  <Contact
                     contact={element}
-                    key={i}
+                    contactKey={i}
                     click={this.onEdit}
                     label={"edit"}
+                    index={i}
+                    moveCard={this.moveCard}
+                    handleDrop={i => {
+                      console.log(i);
+                    }}
                   />
                 </div>
               }
@@ -74,14 +75,14 @@ class ContactList extends Component {
             />
           );
         })}
-      </div>
+      </ContactStickerZone>
     );
 
     const addContactBtn = (
       <button className="animated_btns">Add Contact</button>
     );
 
-    return connectDragSource(
+    return (
       <div className="contacts_area">
         {contactGrid}
 

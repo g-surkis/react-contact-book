@@ -10,7 +10,7 @@ export default props => (
         {/* <a className="close" onClick={close}>
           &times;
         </a> */}
-        {console.log(props)}
+        {/* {console.log(props)} */}
         <CreateEditContact
           button={
             <button
@@ -25,7 +25,7 @@ export default props => (
             </button>
           }
           contact={props.contact}
-        //   contactKey={props.contactKey}
+          contactKey={props.contactKey}
         {...props}
         />
       </div>

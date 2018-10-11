@@ -72,7 +72,7 @@ class CreateEditContact extends Component {
     this.onSubmit();
   }
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div>
         <form onSubmit={this.onSubmit}>
