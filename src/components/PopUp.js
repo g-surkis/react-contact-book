@@ -3,21 +3,15 @@ import Popup from "reactjs-popup";
 import CreateEditContact from "./CreateEditContact";
 
 export default props => (
-    
-  <Popup trigger={props.trigger} position="right center"  modal>
+  <Popup trigger={props.trigger} position="right center" modal>
     {close => (
       <div className="modal">
-        {/* <a className="close" onClick={close}>
-          &times;
-        </a> */}
-        {/* {console.log(props)} */}
         <CreateEditContact
           button={
             <button
               type="sabmit"
               className="animated_btns"
               onClick={() => {
-                // console.log("modal closed ");
                 close();
               }}
             >
@@ -26,7 +20,7 @@ export default props => (
           }
           contact={props.contact}
           contactKey={props.contactKey}
-        {...props}
+          {...props}
         />
       </div>
     )}

@@ -48,23 +48,21 @@ const cardTarget = {
     monitor.getItem().index = hoverIndex;
   }
 };
-function collect(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
-    connectDropTarget: connect.dropTarget(),
-    isDragging: monitor.isDragging()
-  };
-}
+// function collect(connect, monitor) {
+//   return {
+//     connectDragSource: connect.dragSource(),
+//     connectDragPreview: connect.dragPreview(),
+//     connectDropTarget: connect.dropTarget(),
+//     isDragging: monitor.isDragging()
+//   };
+// }
 const propTypes = {
   // Injected by React DnD:
   isDragging: PropTypes.bool.isRequired,
   connectDragSource: PropTypes.func.isRequired
 };
 class ContactSticker extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+ 
   render() {
     const { isDragging, connectDragSource, connectDropTarget } = this.props;
     const opacity = isDragging ? 0 : 1;

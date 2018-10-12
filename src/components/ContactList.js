@@ -57,7 +57,6 @@ class ContactList extends Component {
               trigger={
                 <div>
                   <ContactSticker
-                    // <Contact
                     contact={element}
                     contactKey={i}
                     click={this.onEdit}
@@ -75,7 +74,7 @@ class ContactList extends Component {
             />
           );
         })}
-        </div>
+      </div>
     );
 
     const addContactBtn = (
@@ -95,7 +94,6 @@ class ContactList extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state);
   return {
     contacts: state.contactsReducer
   };

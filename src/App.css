@@ -27,7 +27,6 @@
   max-width: 25%;
   min-width: 20%;
   float: left;
-  /* mar */
   -webkit-box-shadow: 10px 10px 7px -5px rgba(133, 130, 133, 0.73);
   -moz-box-shadow: 10px 10px 7px -5px rgba(133, 130, 133, 0.73);
   box-shadow: 10px 10px 7px -5px rgba(133, 130, 133, 0.73);
@@ -51,7 +50,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* height: 100%; */
 }
 .animated_btns {
   padding: 10px;
@@ -59,7 +57,6 @@
   height: 40px;
   box-shadow: 0px 10px 5px 0px rgba(191, 187, 191, 1);
   margin: 0 auto;
-
 }
 .animated_btns:active {
   transform: translateY(5px);
@@ -84,28 +81,24 @@
 form {
   padding: 2%;
   width: 50%;
-  /* border: 1px solid firebrick; */
   float: left;
 }
 .form_img {
   width: 30%;
-  /* border: 1px solid firebrick; */
   float: left;
 }
 
 .form_row {
   margin: 3px;
-  /* background-color: #fdfcfc; */
 }
 .form_label {
-  font: 12px arial ;
+  font: 12px arial;
 }
 .form_input {
   margin-left: 50px;
   float: right;
   width: 50%;
-  /* border: none; */
-  box-shadow: inset 0px 0px 2px 0px rgba(250,247,250,1);
+  box-shadow: inset 0px 0px 2px 0px rgba(250, 247, 250, 1);
 }
 .form_input:active {
   border: 1px solid black;
@@ -113,7 +106,6 @@ form {
 .form_img {
   float: right;
   margin: 15px 15px 5px 5px;
-
 }
 
 .btn_area {
@@ -125,7 +117,6 @@ form {
   align-items: center;
   justify-content: center;
   margin: 50px 5px 5px 5px;
-  /* border: 2px solid saddlebrown; */
 }
 .form_img > img {
   max-width: 100%;

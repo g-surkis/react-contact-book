@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 
 const initialState = JSON.parse(localStorage.getItem("Contacts"));
 
