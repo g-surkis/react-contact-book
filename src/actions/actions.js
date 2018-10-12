@@ -11,3 +11,9 @@ export const editContactAction = (contacts) => {
     payload: contacts
   };
 };
+export const dropAction = (contacts) => {
+  return {
+    type: "DROP_CONTACT",
+    payload: contacts
+  };
+};

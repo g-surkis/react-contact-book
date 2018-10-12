@@ -1,21 +1,20 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
-
-// import { bindActionCreators } from "redux";
+import PropTypes from "prop-types";
+import { dropAction } from "../actions/actions";
 import { connect } from "react-redux";
 import ContactSticker from "./ContactSticker";
-import Contact from "./Contact";
 
 import PopUp from "./PopUp";
-import ContactStickerZone from "./ContactStickerZone";
-const update = require("immutability-helper");
+
+import { handleMoveCard } from "../services/contacts";
 
 class ContactList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       edit: false,
-      contacts: []
+      contacts: [],
+      itemDragged: null
     };
     this.onEdit = this.onEdit.bind(this);
   }
@@ -25,46 +24,47 @@ class ContactList extends Component {
       this.setState({ contacts: this.props.contacts });
     }
   }
-
+  //for adding new contact just right after closed adding popup
+  static getDerivedStateFromProps(props, state) {
+    return {
+      contacts: props.contacts
+    };
+  }
   onEdit() {
     this.setState({ edit: true });
   }
-  moveCard = (dragIndex, hoverIndex) => {
-    const cards  = this.state.contacts;
-    const dragCard = cards[dragIndex];
-// console.log(dragCard);
-// console.log(hoverIndex);
-    this.setState(
-      update(this.state, {
-        contacts: {
-          $splice: [[dragIndex, 1], [hoverIndex, 0, dragCard]]
-        }
-      })
-    );
-    // console.log(this.state.contacts);
+  itemDragged = el => {
+    this.setState({
+      itemDragged: el
+    });
+    return el;
   };
-  render() {
-    // console.log(this.state.contacts);
+  moveCard = hoverIndex => {
+    return handleMoveCard(
+      this.state.contacts,
+      this.state.itemDragged,
+      hoverIndex,
+      this.props.dropContact
+    );
+  };
 
+  render() {
     const contactGrid = (
-      <ContactStickerZone contacts={this.props.contacts} {...this.props}>
-        {/* <div className="contacts_section"> */}
-        {this.props.contacts.map((element, i) => {
+      <div>
+        {this.state.contacts.map((element, i) => {
           return (
             <PopUp
               trigger={
                 <div>
-                  {/* <ContactSticker */}
-                  <Contact
+                  <ContactSticker
+                    // <Contact
                     contact={element}
                     contactKey={i}
                     click={this.onEdit}
                     label={"edit"}
                     index={i}
                     moveCard={this.moveCard}
-                    handleDrop={i => {
-                      console.log(i);
-                    }}
+                    itemDragged={this.itemDragged}
                   />
                 </div>
               }
@@ -75,7 +75,7 @@ class ContactList extends Component {
             />
           );
         })}
-      </ContactStickerZone>
+        </div>
     );
 
     const addContactBtn = (
@@ -95,8 +95,25 @@ class ContactList extends Component {
 }
 
 function mapStateToProps(state) {
+  // console.log(state);
   return {
-    contacts: state.contacts
+    contacts: state.contactsReducer
   };
 }
-export default connect(mapStateToProps)(ContactList);
+function mapDispatchToProps(dispatch) {
+  return {
+    dropContact: obj => {
+      dispatch(dropAction(obj));
+    }
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContactList);
+
+ContactList.propTypes = {
+  contacts: PropTypes.array,
+  dropContacts: PropTypes.func
+};

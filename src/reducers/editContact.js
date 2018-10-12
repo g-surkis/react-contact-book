@@ -11,7 +11,9 @@ import React, { Component } from "react";
 // let initialState = {}
 // let editContact = (state = initialState, action) => {
 //   if (action.type === "EDIT_CONTACT") {
-//     return action.payload;
+//       let arr = action.payload.slice();
+//     //   console.log(arr === action.payload);
+//     return arr;
 //   }
 //   return state;
 // };

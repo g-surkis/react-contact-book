@@ -42,7 +42,6 @@ class CreateEditContact extends Component {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({ [name]: value });
-    // console.log(this.state);
   }
   onSubmit() {
     let obj = {
@@ -52,15 +51,14 @@ class CreateEditContact extends Component {
       email: this.state.email,
       birthday: this.state.birthDate
     };
-    console.log(validateObj(obj));
+
     if (validateObj(obj)) {
       if (this.props.label === "Save Contact") {
         let contacts = this.props.contacts;
-        contacts[this.props.contactKey] = obj;
-        this.props.editContact(contacts);
-        // this.props.editContact(contacts);
-
-        updateContactsInLocStorage(contacts);
+        let newContacts = [...contacts];
+        newContacts[this.props.contactKey] = obj;
+        this.props.editContacts(newContacts);
+        updateContactsInLocStorage(newContacts);
       } else {
         addContactToLocStorage(obj);
         this.props.addContact(obj);
@@ -68,11 +66,9 @@ class CreateEditContact extends Component {
     }
   }
   componentWillUnmount() {
-    //   console.log('unmount');
     this.onSubmit();
   }
   render() {
-    // console.log(this.props);
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -89,7 +85,6 @@ class CreateEditContact extends Component {
                     ? this.props.contact.firstName
                     : ""
                 }
-                // defaultValue={""}
                 onChange={this.onInputChange}
               />
             </label>
@@ -175,7 +170,7 @@ class CreateEditContact extends Component {
 export default connect(
   function mapStateToProps(state) {
     return {
-      contacts: state.contacts
+      contacts: state.contactsReducer
     };
   },
   function mapDispatchToProps(dispatch) {
@@ -183,16 +178,19 @@ export default connect(
       addContact: obj => {
         dispatch(updateStoreAfterAddingContact(obj));
       },
-      editContact: obj => {
-        // dispatch({ type: "EDIT_CONTACT", payload: obj });
+      editContacts: obj => {
         dispatch(editContactAction(obj));
       }
     };
   }
 )(CreateEditContact);
 
-// CreateEditContact.propTypes = {
-//     users: PropTypes.array,
-//     refreshTableAfterEdit: PropTypes.func,
-//     refreshTableAfterDelete: PropTypes.func
-//   };
+CreateEditContact.propTypes = {
+  addContact: PropTypes.func,
+  button: PropTypes.object,
+  contact: PropTypes.object,
+  contactKey: PropTypes.number,
+  editContacts: PropTypes.func,
+  label: PropTypes.string,
+  trigger: PropTypes.object
+};

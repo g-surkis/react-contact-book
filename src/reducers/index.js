@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import contacts from "./contacts";
+import contactsReducer from "./contactsReducer";
 // import addContact from "./addContact";
 // import editContact from "./editContact";
 
-const allReducers = combineReducers({ contacts,
+const allReducers = combineReducers({ contactsReducer,
     //  addContact, 
     //  editContact 
     });
