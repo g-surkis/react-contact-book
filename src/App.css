@@ -1,0 +1,116 @@
+
+.contacts_area {
+  display: block;
+  width: 100%;
+  height: 900px;
+  border: 2px solid blueviolet;
+}
+.contacts_section {
+  display: block;
+  border: 1px solid wheat;
+  width: 100%;
+  min-height: 200px;
+}
+
+.contact_item {
+  display: block;
+  border: 1px solid magenta;
+  padding: 10px;
+  max-width: 20%;
+  min-width: 20%;
+  float: left;
+  box-shadow: 10px 10px 7px -5px rgba(133, 130, 133, 0.73);
+  transition: background 0.5s linear 0s;
+}
+.contact_item:active {
+  display: block;
+  border: 1px solid magenta;
+  padding: 10px;
+  max-width: 25%;
+  min-width: 20%;
+  float: left;
+  box-shadow: none;
+}
+.contact_item:hover {
+  background:#F9FF66;
+}
+
+.btn_add_contact_area {
+  float: left;
+  width: 100%;
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.animated_btns {
+  padding: 10px;
+  width: 280px;
+  height: 40px;
+  box-shadow: 0px 10px 5px 0px rgba(191, 187, 191, 1);
+  margin: 0 auto;
+}
+.animated_btns:active {
+  transform: translateY(5px);
+  box-shadow: 0px 5px 5px 0px rgba(191, 187, 191, 1);
+}
+
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+form {
+  padding: 2%;
+  width: 50%;
+  float: left;
+}
+.form_img {
+  width: 30%;
+  float: left;
+}
+
+.form_row {
+  margin: 3px;
+}
+.form_label {
+  font: 12px arial;
+}
+.form_input {
+  margin-left: 50px;
+  float: right;
+  width: 50%;
+  box-shadow: inset 0px 0px 2px 0px rgba(250, 247, 250, 1);
+}
+.form_input:active {
+  border: 1px solid black;
+}
+.form_img {
+  float: right;
+  margin: 15px 15px 5px 5px;
+}
+
+.btn_area {
+  width: 97%;
+  height: 80px;
+  float: left;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 5px 5px 5px;
+}
+.form_img > img {
+  max-width: 100%;
+  height: auto;
+}
