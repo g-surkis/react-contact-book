@@ -24,7 +24,7 @@ class ContactList extends Component {
       this.setState({ contacts: this.props.contacts });
     }
   }
-  //for adding new contact just right after closed adding popup
+  //for adding to view new contact just right after closed popup
   static getDerivedStateFromProps(props, state) {
     return {
       contacts: props.contacts

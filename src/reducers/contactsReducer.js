@@ -2,7 +2,8 @@
 const initialState = JSON.parse(localStorage.getItem("Contacts"));
 
 const contactsReducer = (state = initialState, action) => {
-  if (action.type === "EDIT_CONTACTS") {
+  if (action.type === "EDIT_CONTACT") {
+    
     let arr = [...action.payload];
     return arr;
   }

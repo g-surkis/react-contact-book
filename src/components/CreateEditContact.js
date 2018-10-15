@@ -114,6 +114,7 @@ class CreateEditContact extends Component {
                 className="form_input"
                 type="tel"
                 name="tel"
+                pattern="[+][0-9]{12}"
                 defaultValue={
                   this.props.contact !== undefined
                     ? this.props.contact.phone
@@ -159,7 +160,7 @@ class CreateEditContact extends Component {
           </p>
         </form>
         <div className="form_img">
-          <img src={avatar} />
+          <img src={avatar} alt="avatar"/>
         </div>
         <div className="btn_area">{this.props.button}</div>
       </div>

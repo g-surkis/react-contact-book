@@ -11,12 +11,14 @@ import logger from "redux-logger";
 import HTML5Backend from "react-dnd-html5-backend";
 import { DragDropContext } from "react-dnd";
 import { composeWithDevTools } from "redux-devtools-extension";
-// for initialitasion data
+// for initialisation data
 import { initStorageData } from "./initStorageData";
 
 const store = createStore(
   allReducers,
-  composeWithDevTools(applyMiddleware(logger))
+  composeWithDevTools(applyMiddleware(
+    logger
+    ))
 );
 
 class App extends Component {

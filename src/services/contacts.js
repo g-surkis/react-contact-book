@@ -31,6 +31,7 @@ export function handleMoveCard(cards, itemDragged, hoverIndex, dropContact ){
     }
   });
   if (dragIndex === undefined) return;
+  
   if (dragIndex < hoverIndex) {
     let start = cards.slice(0, dragIndex);
     let middle = cards.slice(dragIndex + 1, hoverIndex + 1);

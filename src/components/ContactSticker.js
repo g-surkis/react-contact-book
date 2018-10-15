@@ -1,77 +1,65 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { findDOMNode } from "react-dom";
 
 import { DragSource, DropTarget } from "react-dnd";
 import flow from "lodash/flow";
 
 const cardSource = {
-  beginDrag(props) {
+
+  beginDrag(props, monitor, component) {
     props.itemDragged(props.contact);
     return props.contact;
-  },
-  endDrag(props, monitor, component) {
-    if (!monitor.didDrop()) {
-      // You can check whether the drop was successful
-      // or if the drag ended but nobody handled the drop
-      const item = monitor.getItem();
-      const dropResult = monitor.getDropResult();
-      return;
-    }
   }
 };
 
-const cardTarget = {
+const cardTarget = { 
+ 
   hover(props, monitor, component) {
     const dragIndex = monitor.getItem().index;
     const hoverIndex = props.index;
 
-    // Don't replace items with themselves
     if (dragIndex === hoverIndex) {
       return;
     }
-
-    // Determine rectangle on screen
-    const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
-    // console.log(hoverBoundingRect);
-    // Get vertical middle
-    const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-
-    // Determine mouse position
-    const clientOffset = monitor.getClientOffset();
-
-    // Get pixels to the top
-    const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-
     props.moveCard(hoverIndex);
 
     monitor.getItem().index = hoverIndex;
   }
 };
-// function collect(connect, monitor) {
-//   return {
-//     connectDragSource: connect.dragSource(),
-//     connectDragPreview: connect.dragPreview(),
-//     connectDropTarget: connect.dropTarget(),
-//     isDragging: monitor.isDragging()
-//   };
-// }
-const propTypes = {
-  // Injected by React DnD:
-  isDragging: PropTypes.bool.isRequired,
-  connectDragSource: PropTypes.func.isRequired
-};
+
+
 class ContactSticker extends Component {
- 
+  componentWillReceiveProps(nextProps) {
+    console.log(!this.props.isDragging && nextProps.isOver);
+    if (!this.props.isDragging && nextProps.isOver ) {
+
+      const dragElement = document.getElementById("card" + this.props.index);
+      console.log(dragElement);
+       dragElement.style.opacity = 1;
+    }
+  }
+
+  compo
+
   render() {
-    const { isDragging, connectDragSource, connectDropTarget } = this.props;
-    const opacity = isDragging ? 0 : 1;
+    const {
+      isDragging,
+      connectDragSource,
+      connectDropTarget,
+      isOver
+    } = this.props;
+    const opacity = (isDragging || isOver)  ? 0 : 1 ;
+
+
     return connectDragSource(
-      connectDropTarget(
+      connectDropTarget( 
         <figure
           className="contact_item"
+          id = {"card" + this.props.index}
           onClick={this.props.click}
-          style={{ opacity }}
+          style={{
+            opacity
+          }}
         >
           <h4>
             {this.props.contact.firstName} {this.props.contact.lastName}
@@ -89,8 +77,9 @@ export default flow(
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
   })),
-  DropTarget("card", cardTarget, connect => ({
-    connectDropTarget: connect.dropTarget()
+  DropTarget("card", cardTarget, (connect, monitor) => ({
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver({ shallow: true })
   }))
 )(ContactSticker);
 
