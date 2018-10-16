@@ -5,15 +5,13 @@ import { DragSource, DropTarget } from "react-dnd";
 import flow from "lodash/flow";
 
 const cardSource = {
-
   beginDrag(props, monitor, component) {
     props.itemDragged(props.contact);
     return props.contact;
   }
 };
 
-const cardTarget = { 
- 
+const cardTarget = {
   hover(props, monitor, component) {
     const dragIndex = monitor.getItem().index;
     const hoverIndex = props.index;
@@ -27,19 +25,15 @@ const cardTarget = {
   }
 };
 
-
 class ContactSticker extends Component {
   componentWillReceiveProps(nextProps) {
-    console.log(!this.props.isDragging && nextProps.isOver);
-    if (!this.props.isDragging && nextProps.isOver ) {
-
+    if (!this.props.isDragging && nextProps.isOver) {
       const dragElement = document.getElementById("card" + this.props.index);
-      console.log(dragElement);
-       dragElement.style.opacity = 1;
+      dragElement.style.opacity = 1;
     }
   }
 
-  compo
+  compo;
 
   render() {
     const {
@@ -48,14 +42,13 @@ class ContactSticker extends Component {
       connectDropTarget,
       isOver
     } = this.props;
-    const opacity = (isDragging || isOver)  ? 0 : 1 ;
-
+    const opacity = isDragging || isOver ? 0 : 1;
 
     return connectDragSource(
-      connectDropTarget( 
+      connectDropTarget(
         <figure
           className="contact_item"
-          id = {"card" + this.props.index}
+          id={"card" + this.props.index}
           onClick={this.props.click}
           style={{
             opacity

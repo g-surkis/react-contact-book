@@ -1,6 +1,6 @@
 
 const initialState = JSON.parse(localStorage.getItem("Contacts"));
-
+console.log(initialState);
 const contactsReducer = (state = initialState, action) => {
   if (action.type === "EDIT_CONTACT") {
     

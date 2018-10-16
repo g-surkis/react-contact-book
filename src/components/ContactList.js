@@ -20,8 +20,10 @@ class ContactList extends Component {
   }
 
   componentDidMount() {
-    if (this.state.contacts.length === 0) {
-      this.setState({ contacts: this.props.contacts });
+    if (localStorage.getItem("Contacts")) {
+      if (this.state.contacts.length === 0) {
+        this.setState({ contacts: this.props.contacts });
+      }
     }
   }
   //for adding to view new contact just right after closed popup
@@ -49,33 +51,36 @@ class ContactList extends Component {
   };
 
   render() {
-    const contactGrid = (
-      <div>
-        {this.state.contacts.map((element, i) => {
-          return (
-            <PopUp
-              trigger={
-                <div>
-                  <ContactSticker
-                    contact={element}
-                    contactKey={i}
-                    click={this.onEdit}
-                    label={"edit"}
-                    index={i}
-                    moveCard={this.moveCard}
-                    itemDragged={this.itemDragged}
-                  />
-                </div>
-              }
-              contact={element}
-              contactKey={i}
-              label={"Save Contact"}
-              key={i}
-            />
-          );
-        })}
-      </div>
-    );
+    let contactGrid = null;
+    if (localStorage.getItem("Contacts")) {
+      contactGrid = (
+        <div>
+          {this.state.contacts.map((element, i) => {
+            return (
+              <PopUp
+                trigger={
+                  <div>
+                    <ContactSticker
+                      contact={element}
+                      contactKey={i}
+                      click={this.onEdit}
+                      label={"edit"}
+                      index={i}
+                      moveCard={this.moveCard}
+                      itemDragged={this.itemDragged}
+                    />
+                  </div>
+                }
+                contact={element}
+                contactKey={i}
+                label={"Save Contact"}
+                key={i}
+              />
+            );
+          })}
+        </div>
+      );
+    }
 
     const addContactBtn = (
       <button className="animated_btns">Add Contact</button>
