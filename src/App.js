@@ -22,9 +22,13 @@ const store = createStore(
 );
 
 class App extends Component {
+  componentDidMount(){
+    if(!localStorage.getItem("Contacts")){
+      localStorage.setItem('Contacts', JSON.stringify([]))
+    }
+  }
   render() {
     // initStorageData();
-
     return (
       <Provider store={store}>
         <ContactList />
