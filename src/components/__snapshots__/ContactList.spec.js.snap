@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>C O N T A C T  L I S T --- REACT-REDUX (Shallow + passing the {store} directly) >>>C O N T A C T  L I S T --- Snapshot +++capturing Snapshot of ContactList 1`] = `
+<div
+  className="contacts_area"
+>
+  <div
+    className="btn_add_contact_area"
+  >
+    <button
+      className="animated_btns"
+      onClick={[Function]}
+    >
+      Add Contact
+    </button>
+  </div>
+</div>
+`;

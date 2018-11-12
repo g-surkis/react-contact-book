@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>C R E A T E  E D I T  C O N T A C T --- REACT-REDUX (Shallow + passing the {store} directly) >>>C R E A T E  E D I T  C O N T A C T --- Snapshot +++capturing Snapshot of ContactList 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <p
+      className="form_row"
+    >
+      <label
+        className="form_label"
+      >
+         
+        First Name
+         
+        <input
+          className="form_input"
+          defaultValue=""
+          name="firstName"
+          onChange={[Function]}
+          type="text"
+        />
+      </label>
+    </p>
+    <p
+      className="form_row"
+    >
+      <label
+        className="form_label"
+      >
+         
+        Last Name
+         
+        <input
+          className="form_input"
+          defaultValue=""
+          name="lastName"
+          onChange={[Function]}
+          type="text"
+        />
+      </label>
+    </p>
+    <p
+      className="form_row"
+    >
+      <label
+        className="form_label"
+      >
+         
+        Phone Number
+         
+        <input
+          className="form_input"
+          defaultValue=""
+          name="tel"
+          onChange={[Function]}
+          pattern="[+][0-9]{12}"
+          type="tel"
+        />
+      </label>
+    </p>
+    <p
+      className="form_row"
+    >
+      <label
+        className="form_label"
+      >
+         
+        Email Address
+         
+        <input
+          className="form_input"
+          defaultValue=""
+          name="email"
+          onChange={[Function]}
+          type="email"
+        />
+      </label>
+    </p>
+    <p
+      className="form_row"
+    >
+      <label
+        className="form_label"
+      >
+         
+        Date of birth
+         
+        <input
+          className="form_input"
+          defaultValue=""
+          name="birthDate"
+          onChange={[Function]}
+          type="date"
+        />
+      </label>
+    </p>
+  </form>
+  <div
+    className="form_img"
+  >
+    <img
+      alt="avatar"
+      src="avatar.jpg"
+    />
+  </div>
+  <div
+    className="btn_area"
+  />
+</div>
+`;

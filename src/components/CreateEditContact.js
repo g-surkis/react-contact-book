@@ -63,11 +63,16 @@ class CreateEditContact extends Component {
         addContactToLocStorage(obj);
         this.props.addContact(obj);
       }
+    } else {
+     console.log('Enter correct data');
     }
   }
+
+  
   componentWillUnmount() {
     this.onSubmit();
   }
+
   render() {
     return (
       <div>

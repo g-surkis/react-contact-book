@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>C O N T A C T  S T I C K E R --- REACT-REDUX (Shallow + passing the {store} directly) >>>C O N T A C T  S T I C K E R  --- Snapshot +++capturing Snapshot of ContactList 1`] = `null`;
