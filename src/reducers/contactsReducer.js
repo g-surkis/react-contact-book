@@ -1,10 +1,11 @@
 
 const initialState = JSON.parse(localStorage.getItem("Contacts"));
-console.log(initialState);
 const contactsReducer = (state = initialState, action) => {
   if (action.type === "EDIT_CONTACT") {
-    
+    // console.log(state);
+
     let arr = [...action.payload];
+
     return arr;
   }
   if (action.type === "ADD_CONTACT") {
@@ -20,3 +21,5 @@ const contactsReducer = (state = initialState, action) => {
 };
 
 export default contactsReducer;
+
+

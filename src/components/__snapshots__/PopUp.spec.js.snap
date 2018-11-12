@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PopUp component renders properly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <_default
+    close={[MockFunction]}
+    contact={Object {}}
+    contactKey={0}
+    label=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "arrow": true,
+      "arrowStyle": Object {},
+      "children": [Function],
+      "className": "",
+      "closeOnDocumentClick": true,
+      "closeOnEscape": true,
+      "contentStyle": Object {},
+      "defaultOpen": false,
+      "disabled": false,
+      "keepTooltipInside": false,
+      "lockScroll": false,
+      "modal": true,
+      "mouseEnterDelay": 100,
+      "mouseLeaveDelay": 100,
+      "offsetX": 0,
+      "offsetY": 0,
+      "on": Array [
+        "click",
+      ],
+      "onClose": [Function],
+      "onOpen": [Function],
+      "open": false,
+      "overlayStyle": Object {},
+      "position": "right center",
+      "trigger": null,
+    },
+    "ref": null,
+    "rendered": [Function],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "arrow": true,
+        "arrowStyle": Object {},
+        "children": [Function],
+        "className": "",
+        "closeOnDocumentClick": true,
+        "closeOnEscape": true,
+        "contentStyle": Object {},
+        "defaultOpen": false,
+        "disabled": false,
+        "keepTooltipInside": false,
+        "lockScroll": false,
+        "modal": true,
+        "mouseEnterDelay": 100,
+        "mouseLeaveDelay": 100,
+        "offsetX": 0,
+        "offsetY": 0,
+        "on": Array [
+          "click",
+        ],
+        "onClose": [Function],
+        "onOpen": [Function],
+        "open": false,
+        "overlayStyle": Object {},
+        "position": "right center",
+        "trigger": null,
+      },
+      "ref": null,
+      "rendered": [Function],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

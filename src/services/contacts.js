@@ -4,12 +4,25 @@ export function addContactToLocStorage(obj) {
   localStorage.setItem("Contacts", JSON.stringify(contactList));
 }
 
+// export function validateObj(obj) {
+//   for (let value in obj) {
+//     if (!obj[value]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
 export function validateObj(obj) {
-  for (let value in obj) {
-    if (!obj[value]) {
-      return false;
-    }
-  }
+  if (!/^\w+[^\d]$/.exec(obj.firstName)) return false;
+  if (!/^\w+[^\d]$/.exec(obj.LastName)) return false;
+  if (!/^[0-9]{9}$/.exec(obj.phone)) return false;
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  if (!re.exec(obj.email)) return false;
+
+  if (!obj.birthday) return false;
+
   return true;
 }
 
@@ -18,8 +31,7 @@ export function updateContactsInLocStorage(contacts) {
   localStorage.setItem("Contacts", JSON.stringify(contacts));
 }
 
-
-export function handleMoveCard(cards, itemDragged, hoverIndex, dropContact ){
+export function handleMoveCard(cards, itemDragged, hoverIndex, dropContact) {
   const dragIndex = +cards.findIndex((item, i) => {
     if (
       item.firstName === itemDragged.firstName &&
@@ -31,7 +43,7 @@ export function handleMoveCard(cards, itemDragged, hoverIndex, dropContact ){
     }
   });
   if (dragIndex === undefined) return;
-  
+
   if (dragIndex < hoverIndex) {
     let start = cards.slice(0, dragIndex);
     let middle = cards.slice(dragIndex + 1, hoverIndex + 1);
@@ -60,7 +72,7 @@ export function handleMoveCard(cards, itemDragged, hoverIndex, dropContact ){
     } else {
       arr = [...start, cards[dragIndex], ...middle, ...finish];
     }
-    
+
     dropContact(arr);
   }
 }
